@@ -5,35 +5,32 @@
  */
 package com.nishisan.designer.log;
 
-import org.apache.log4j.Logger;
+import org.apache.log4j.AppenderSkeleton;
+import org.apache.log4j.spi.LoggingEvent;
 import org.openide.windows.IOProvider;
 import org.openide.windows.InputOutput;
 
 /**
- * Nishi Network Designer Default Logger...
  *
  * @author Lucas
  */
-public class NNDLogger {
+public class NetbeansConsoleAppender extends AppenderSkeleton {
 
     private static final InputOutput io = IOProvider.getDefault().getIO("Log", true);
-    
-    /**
-     * Debug Level =0
-     *
-     * @param msg
-     */
-    public static void debug(String msg) {
-        
+
+    @Override
+    protected void append(LoggingEvent event) {
+        io.getOut().print(this.layout.format(event));
     }
 
-    /**
-     * Debug Level =0
-     *
-     * @param msg
-     */
-    public static void info(String msg) {
-        io.getOut().println(msg);
+    @Override
+    public void close() {
+        //faz algo..
+    }
+
+    @Override
+    public boolean requiresLayout() {
+        return true;
     }
 
 }

@@ -1,5 +1,6 @@
 Manifest-Version: 1.0
 OpenIDE-Module: com.nishisan.designer.api
+OpenIDE-Module-Install: com/nishisan/designer/api/Installer.class
 OpenIDE-Module-Localizing-Bundle: com/nishisan/designer/api/Bundle.properties
 OpenIDE-Module-Specification-Version: 1.0
 

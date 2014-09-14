@@ -52,26 +52,26 @@ public final class CmdbItensExplorerTopComponent extends TopComponent {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        CmdbItemExplorer = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
+        itemExplorerScrollPane = new javax.swing.JScrollPane();
+        itemExplorerTree = new javax.swing.JTree();
 
-        CmdbItemExplorer.setViewportView(jTree1);
+        itemExplorerScrollPane.setViewportView(itemExplorerTree);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(CmdbItemExplorer, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(itemExplorerScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(CmdbItemExplorer, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addComponent(itemExplorerScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane CmdbItemExplorer;
-    private javax.swing.JTree jTree1;
+    private javax.swing.JScrollPane itemExplorerScrollPane;
+    private javax.swing.JTree itemExplorerTree;
     // End of variables declaration//GEN-END:variables
     @Override
     public void componentOpened() {

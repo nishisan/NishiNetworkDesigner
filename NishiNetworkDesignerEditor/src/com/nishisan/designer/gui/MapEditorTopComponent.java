@@ -46,6 +46,7 @@ public final class MapEditorTopComponent extends TopComponent {
         setName(Bundle.CTL_MapEditorTopComponent());
         setToolTipText(Bundle.HINT_MapEditorTopComponent());
         this.createSceneEditorAndSatelliteView();
+        
     }
 
     /**

@@ -5,9 +5,11 @@
  */
 package com.nishisan.designer.gui;
 
+import java.awt.BorderLayout;
 import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
+import org.openide.explorer.view.BeanTreeView;
 import org.openide.windows.TopComponent;
 import org.openide.util.NbBundle.Messages;
 
@@ -41,7 +43,8 @@ public final class MapExplorerTopComponent extends TopComponent {
         initComponents();
         setName(Bundle.CTL_MapExplorerTopComponent());
         setToolTipText(Bundle.HINT_MapExplorerTopComponent());
-
+        setLayout(new BorderLayout());
+        add(new BeanTreeView(), BorderLayout.CENTER);
     }
 
     /**
@@ -52,26 +55,19 @@ public final class MapExplorerTopComponent extends TopComponent {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        MapExplorerTree = new javax.swing.JTree();
-
-        jScrollPane1.setViewportView(MapExplorerTree);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTree MapExplorerTree;
-    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
     @Override
     public void componentOpened() {

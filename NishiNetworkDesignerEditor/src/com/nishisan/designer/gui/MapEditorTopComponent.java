@@ -45,6 +45,13 @@ public final class MapEditorTopComponent extends TopComponent {
         initComponents();
         setName(Bundle.CTL_MapEditorTopComponent());
         setToolTipText(Bundle.HINT_MapEditorTopComponent());
+        this.createSceneEditorAndSatelliteView();
+    }
+
+    /**
+     * Cria o scene editor padrão e o satellite view do mesmo..
+     */
+    private void createSceneEditorAndSatelliteView() {
         setLayout(new BorderLayout());
         MapEditor editor = new MapEditor();
         add(editor.createView(), BorderLayout.CENTER);

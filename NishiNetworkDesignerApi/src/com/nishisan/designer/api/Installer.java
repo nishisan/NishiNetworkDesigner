@@ -24,13 +24,13 @@ public class Installer extends ModuleInstall {
     }
 
     private void configureLoggingSystem() {
-        BasicConfigurator.configure();
-        NetbeansConsoleAppender logAppender = new NetbeansConsoleAppender();
-        logAppender.setName("Default");
-        logAppender.setLayout(new PatternLayout("[%5p] - %d{dd/MM/yyyy HH:mm:ss} - (%C) - %m%n"));
-
-        Logger.getRootLogger().setLevel(Level.DEBUG);
-        Logger.getRootLogger().addAppender(logAppender);
+//        BasicConfigurator.configure();
+//        NetbeansConsoleAppender logAppender = new NetbeansConsoleAppender();
+//        logAppender.setName("Default");
+//        logAppender.setLayout(new PatternLayout("[%5p] - %d{dd/MM/yyyy HH:mm:ss} - (%C) - %m%n"));
+//
+//        Logger.getRootLogger().setLevel(Level.DEBUG);
+//        Logger.getRootLogger().addAppender(logAppender);
 
     }
 

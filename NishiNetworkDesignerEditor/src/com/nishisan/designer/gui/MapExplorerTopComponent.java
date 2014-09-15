@@ -6,10 +6,8 @@
 package com.nishisan.designer.gui;
 
 import com.nishisan.designer.dto.CmdbMap;
-import com.nishisan.designer.dto.CmdbMapChildFactory;
 import com.nishisan.designer.objects.CmdbMapNode;
 import java.awt.BorderLayout;
-import java.awt.Event;
 import java.util.Collection;
 import org.apache.log4j.Logger;
 import org.netbeans.api.settings.ConvertAsProperties;
@@ -18,8 +16,6 @@ import org.openide.awt.ActionReference;
 import org.openide.explorer.ExplorerManager;
 import org.openide.explorer.ExplorerUtils;
 import org.openide.explorer.view.BeanTreeView;
-import org.openide.nodes.AbstractNode;
-import org.openide.nodes.Children;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
 import org.openide.util.LookupListener;
@@ -54,23 +50,26 @@ import org.openide.util.lookup.InstanceContent;
 })
 public final class MapExplorerTopComponent extends TopComponent implements LookupListener {
 
-    private final ExplorerManager mgr = new ExplorerManager();
     private final Logger logger = Logger.getLogger(MapExplorerTopComponent.class);
-    private final InstanceContent content = new InstanceContent();
+
     private Lookup.Result<CmdbMap> result = null;
+    private BeanTreeView mapExplorerView = null;
 
     public MapExplorerTopComponent() {
         initComponents();
         setName(Bundle.CTL_MapExplorerTopComponent());
         setToolTipText(Bundle.HINT_MapExplorerTopComponent());
+        initViewMapExplorerTree();
+    }
+
+    /**
+     * Inicia o BeanTreeView
+     */
+    private void initViewMapExplorerTree() {
         setLayout(new BorderLayout());
-        CmdbMap m = new CmdbMap();
-        associateLookup(ExplorerUtils.createLookup(mgr, getActionMap()));
-
-        add(new BeanTreeView(), BorderLayout.CENTER);
-
-        mgr.setRootContext(new CmdbMapNode());
-        logger.debug("Done Setting Root Context..");
+        mapExplorerView = new BeanTreeView();
+        add(mapExplorerView, BorderLayout.CENTER);
+        logger.debug("Done Creating MapExplorerView");
 
     }
 
@@ -125,9 +124,9 @@ public final class MapExplorerTopComponent extends TopComponent implements Looku
         Collection<? extends CmdbMap> allEvents = result.allInstances();
         if (!allEvents.isEmpty()) {
             CmdbMap event = allEvents.iterator().next();
-           
+
         } else {
-            
+
         }
         logger.debug("Selection Changed..");
     }

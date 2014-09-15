@@ -36,7 +36,7 @@ import org.openide.windows.WindowManager;
 )
 @Messages({
     "CTL_MapEditorAction=MapEditor",
-    "CTL_MapEditorTopComponent=MapEditor Window",
+    "CTL_MapEditorTopComponent=Network Editor",
     "HINT_MapEditorTopComponent=This is a MapEditor window"
 })
 public final class MapEditorTopComponent extends TopComponent {

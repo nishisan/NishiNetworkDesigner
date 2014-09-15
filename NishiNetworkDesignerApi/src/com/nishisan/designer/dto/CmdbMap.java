@@ -5,24 +5,17 @@
  */
 package com.nishisan.designer.dto;
 
-import org.openide.nodes.AbstractNode;
-import org.openide.nodes.Children;
-import org.openide.util.lookup.Lookups;
-
 /**
  *
  * @author Lucas
  */
-public class CmdbMap extends AbstractNode {
+public class CmdbMap  {
 
-    public CmdbMap(Children children) {
-        super(Children.create(new CmdbMapChildFactory(), true), Lookups.singleton(children));
-        setDisplayName("Event ");
+   
+
+    public Integer getIndex() {
+        return 1;
     }
 
-    public CmdbMap() {
-        super(Children.create(new CmdbMapChildFactory(), true));
-        setDisplayName("Root");
-
-    }
+   
 }

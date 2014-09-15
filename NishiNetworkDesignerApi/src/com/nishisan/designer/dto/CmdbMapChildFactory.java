@@ -23,7 +23,7 @@ public class CmdbMapChildFactory extends ChildFactory<CmdbMap> {
     @Override
     protected boolean createKeys(List<CmdbMap> list) {
         CmdbMap[] objs = new CmdbMap[5];
-        for (int i = 0; i < objs.length; i++) {
+        for (int i = 0; i < objs.length; i++) {            
             objs[i] = new CmdbMap();
         }
         //toPopulate.addAll(Arrays.asList(objs));

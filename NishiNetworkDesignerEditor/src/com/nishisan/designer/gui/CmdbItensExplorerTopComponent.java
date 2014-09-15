@@ -32,7 +32,7 @@ import org.openide.util.NbBundle.Messages;
 )
 @Messages({
     "CTL_CmdbItensExplorerAction=CmdbItensExplorer",
-    "CTL_CmdbItensExplorerTopComponent=CmdbItensExplorer Window",
+    "CTL_CmdbItensExplorerTopComponent=Item Explorer",
     "HINT_CmdbItensExplorerTopComponent=This is a CmdbItensExplorer window"
 })
 public final class CmdbItensExplorerTopComponent extends TopComponent {

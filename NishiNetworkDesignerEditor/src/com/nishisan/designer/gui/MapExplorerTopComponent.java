@@ -6,9 +6,11 @@
 package com.nishisan.designer.gui;
 
 import com.nishisan.designer.dto.CmdbMap;
+import com.nishisan.designer.dto.CmdbMapChildFactory;
 import com.nishisan.designer.objects.CmdbMapNode;
 import java.awt.BorderLayout;
 import java.util.Collection;
+import java.util.Iterator;
 import org.apache.log4j.Logger;
 import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
@@ -16,13 +18,14 @@ import org.openide.awt.ActionReference;
 import org.openide.explorer.ExplorerManager;
 import org.openide.explorer.ExplorerUtils;
 import org.openide.explorer.view.BeanTreeView;
+import org.openide.nodes.AbstractNode;
+import org.openide.nodes.Children;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
 import org.openide.util.LookupListener;
 import org.openide.windows.TopComponent;
 import org.openide.util.NbBundle.Messages;
 import org.openide.util.Utilities;
-import org.openide.util.lookup.InstanceContent;
 
 /**
  * Top component which displays something.
@@ -48,18 +51,22 @@ import org.openide.util.lookup.InstanceContent;
     "CTL_MapExplorerTopComponent=Map Explorer",
     "HINT_MapExplorerTopComponent=This is a MapExplorer window"
 })
-public final class MapExplorerTopComponent extends TopComponent implements LookupListener {
+public final class MapExplorerTopComponent extends TopComponent implements ExplorerManager.Provider, LookupListener {
 
     private final Logger logger = Logger.getLogger(MapExplorerTopComponent.class);
 
     private Lookup.Result<CmdbMap> result = null;
     private BeanTreeView mapExplorerView = null;
+    private final ExplorerManager mgr = new ExplorerManager();
 
     public MapExplorerTopComponent() {
         initComponents();
         setName(Bundle.CTL_MapExplorerTopComponent());
         setToolTipText(Bundle.HINT_MapExplorerTopComponent());
         initViewMapExplorerTree();
+        associateLookup(ExplorerUtils.createLookup(mgr, getActionMap()));
+        //mgr.setRootContext(new AbstractNode(Children.create(new CmdbMapChildFactory(), true)));
+        mgr.setRootContext(new CmdbMapNode());
     }
 
     /**
@@ -98,8 +105,7 @@ public final class MapExplorerTopComponent extends TopComponent implements Looku
     @Override
     public void componentOpened() {
         // TODO add custom code on component opening
-        result = Utilities.actionsGlobalContext().lookupResult(CmdbMap.class);
-        result.addLookupListener(this);
+
     }
 
     @Override
@@ -120,14 +126,26 @@ public final class MapExplorerTopComponent extends TopComponent implements Looku
     }
 
     @Override
-    public void resultChanged(LookupEvent le) {
+    public ExplorerManager getExplorerManager() {
+        return mgr;
+    }
+
+    @Override
+    public void resultChanged(LookupEvent lookupEvent) {
         Collection<? extends CmdbMap> allEvents = result.allInstances();
         if (!allEvents.isEmpty()) {
-            CmdbMap event = allEvents.iterator().next();
+
+            for (Iterator i = allEvents.iterator(); i.hasNext();) {
+                CmdbMap o = (CmdbMap) i.next();
+                if (i.hasNext()) {
+
+                }
+                logger.debug("Selected: " + o.getIndex());
+            }
 
         } else {
 
         }
-        logger.debug("Selection Changed..");
     }
+
 }

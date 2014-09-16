@@ -5,14 +5,22 @@
  */
 package com.nishisan.designer.gui;
 
+import com.nishisan.designer.dto.CmdbMap;
 import com.nishisan.designer.scene.MapEditor;
 import java.awt.BorderLayout;
+import java.util.Collection;
+import java.util.Iterator;
+import org.apache.log4j.Logger;
 import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
+import org.openide.explorer.ExplorerManager;
 import org.openide.util.Lookup;
+import org.openide.util.LookupEvent;
+import org.openide.util.LookupListener;
 import org.openide.windows.TopComponent;
 import org.openide.util.NbBundle.Messages;
+import org.openide.util.Utilities;
 import org.openide.windows.WindowManager;
 
 /**
@@ -39,14 +47,17 @@ import org.openide.windows.WindowManager;
     "CTL_MapEditorTopComponent=Network Editor",
     "HINT_MapEditorTopComponent=This is a MapEditor window"
 })
-public final class MapEditorTopComponent extends TopComponent {
+public final class MapEditorTopComponent extends TopComponent implements LookupListener {
+
+    private Lookup.Result<CmdbMap> result = null;
+    private final Logger logger = Logger.getLogger(MapEditorTopComponent.class);
 
     public MapEditorTopComponent() {
         initComponents();
         setName(Bundle.CTL_MapEditorTopComponent());
         setToolTipText(Bundle.HINT_MapEditorTopComponent());
         this.createSceneEditorAndSatelliteView();
-        
+
     }
 
     /**
@@ -88,6 +99,8 @@ public final class MapEditorTopComponent extends TopComponent {
     @Override
     public void componentOpened() {
         // TODO add custom code on component opening
+        result = Utilities.actionsGlobalContext().lookupResult(CmdbMap.class);
+        result.addLookupListener(this);
     }
 
     @Override
@@ -105,5 +118,24 @@ public final class MapEditorTopComponent extends TopComponent {
     void readProperties(java.util.Properties p) {
         String version = p.getProperty("version");
         // TODO read your settings according to their version
+    }
+   
+
+    @Override
+    public void resultChanged(LookupEvent lookupEvent) {
+        Collection<? extends CmdbMap> allEvents = result.allInstances();
+        if (!allEvents.isEmpty()) {
+
+            for (Iterator i = allEvents.iterator(); i.hasNext();) {
+                CmdbMap o = (CmdbMap) i.next();
+                if (i.hasNext()) {
+
+                }
+                logger.debug("Selected From Editor...: " + o.getIndex());
+            }
+
+        } else {
+
+        }
     }
 }

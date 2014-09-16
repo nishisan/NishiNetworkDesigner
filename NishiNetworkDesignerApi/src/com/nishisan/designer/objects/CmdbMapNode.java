@@ -7,8 +7,10 @@ package com.nishisan.designer.objects;
 
 import com.nishisan.designer.dto.CmdbMap;
 import com.nishisan.designer.dto.CmdbMapChildFactory;
+import javafx.event.Event;
 import org.openide.nodes.AbstractNode;
 import org.openide.nodes.Children;
+import org.openide.nodes.Node;
 import org.openide.nodes.PropertySupport;
 import org.openide.nodes.Sheet;
 import org.openide.util.Exceptions;
@@ -29,8 +31,8 @@ public class CmdbMapNode extends AbstractNode {
         super(Children.create(new CmdbMapChildFactory(), true));
         setDisplayName("Root");
     }
-    
-     @Override
+
+    @Override
     protected Sheet createSheet() {
         Sheet sheet = Sheet.createDefault();
         Sheet.Set set = Sheet.createPropertiesSet();
@@ -45,4 +47,15 @@ public class CmdbMapNode extends AbstractNode {
         sheet.put(set);
         return sheet;
     }
+
+    @Override
+    public String getHtmlDisplayName() {
+        CmdbMap obj = getLookup().lookup(CmdbMap.class);
+        if (obj != null && obj.getIndex() % 2 != 0) {
+            return "<font color='0000FF'>Event " + obj.getIndex() + "</font>";
+        } else {
+            return null;
+        }
+    }
+
 }

@@ -5,9 +5,12 @@
  */
 package com.nishisan.designer.gui;
 
+import java.awt.BorderLayout;
+import org.apache.log4j.Logger;
 import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
+import org.openide.explorer.view.BeanTreeView;
 import org.openide.windows.TopComponent;
 import org.openide.util.NbBundle.Messages;
 
@@ -37,10 +40,25 @@ import org.openide.util.NbBundle.Messages;
 })
 public final class CmdbItensExplorerTopComponent extends TopComponent {
 
+    private final Logger logger = Logger.getLogger(CmdbItensExplorerTopComponent.class);
+
+    private BeanTreeView mapExplorerView = null;
+
     public CmdbItensExplorerTopComponent() {
         initComponents();
         setName(Bundle.CTL_CmdbItensExplorerTopComponent());
         setToolTipText(Bundle.HINT_CmdbItensExplorerTopComponent());
+        initViewMapExplorerTree();
+    }
+
+    /**
+     * Inicia o BeanTreeView
+     */
+    private void initViewMapExplorerTree() {
+        setLayout(new BorderLayout());
+        mapExplorerView = new BeanTreeView();
+        add(mapExplorerView, BorderLayout.CENTER);
+        logger.debug("Done Creating MapExplorerView");
 
     }
 
@@ -52,26 +70,19 @@ public final class CmdbItensExplorerTopComponent extends TopComponent {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        itemExplorerScrollPane = new javax.swing.JScrollPane();
-        itemExplorerTree = new javax.swing.JTree();
-
-        itemExplorerScrollPane.setViewportView(itemExplorerTree);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(itemExplorerScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(itemExplorerScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane itemExplorerScrollPane;
-    private javax.swing.JTree itemExplorerTree;
     // End of variables declaration//GEN-END:variables
     @Override
     public void componentOpened() {

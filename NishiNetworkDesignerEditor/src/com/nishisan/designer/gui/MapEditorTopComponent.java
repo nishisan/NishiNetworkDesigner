@@ -72,6 +72,8 @@ public final class MapEditorTopComponent extends TopComponent implements LookupL
             satelliteViewCmp.setLayout(new BorderLayout());
             satelliteViewCmp.add(editor.createSatelliteView(), BorderLayout.CENTER);
         }
+        
+        
     }
 
     /**

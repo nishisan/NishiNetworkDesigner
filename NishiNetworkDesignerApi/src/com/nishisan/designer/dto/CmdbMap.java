@@ -5,16 +5,25 @@
  */
 package com.nishisan.designer.dto;
 
+import org.netbeans.api.visual.widget.Scene;
+import org.netbeans.api.visual.widget.general.IconNodeWidget;
+
 /**
  *
  * @author Lucas
  */
-public class CmdbMap  {
+public class CmdbMap {
+
+    
+    
+    public CmdbMap() {
+       
+    }
 
    
 
     public Integer getIndex() {
-        return 1;
+        return 2;
     }
 
    

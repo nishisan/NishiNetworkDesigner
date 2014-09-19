@@ -7,10 +7,9 @@ package com.nishisan.designer.objects;
 
 import com.nishisan.designer.dto.CmdbMap;
 import com.nishisan.designer.dto.CmdbMapChildFactory;
-import javafx.event.Event;
+import org.netbeans.api.visual.widget.Widget;
 import org.openide.nodes.AbstractNode;
 import org.openide.nodes.Children;
-import org.openide.nodes.Node;
 import org.openide.nodes.PropertySupport;
 import org.openide.nodes.Sheet;
 import org.openide.util.Exceptions;
@@ -24,7 +23,7 @@ public class CmdbMapNode extends AbstractNode {
 
     public CmdbMapNode(CmdbMap children) {
         super(Children.create(new CmdbMapChildFactory(), true), Lookups.singleton(children));
-        setDisplayName("Event");
+        setDisplayName("Default Map");
     }
 
     public CmdbMapNode() {

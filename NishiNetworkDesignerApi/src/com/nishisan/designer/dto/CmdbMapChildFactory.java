@@ -8,13 +8,9 @@ package com.nishisan.designer.dto;
 import com.nishisan.designer.objects.CmdbMapNode;
 import java.util.Arrays;
 import java.util.List;
-import javafx.event.Event;
 import org.apache.log4j.Logger;
-import org.openide.nodes.AbstractNode;
 import org.openide.nodes.ChildFactory;
-import org.openide.nodes.Children;
 import org.openide.nodes.Node;
-import org.openide.util.lookup.Lookups;
 
 /**
  *

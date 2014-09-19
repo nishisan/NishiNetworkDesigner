@@ -48,7 +48,7 @@ public final class CmdbItensExplorerTopComponent extends TopComponent {
         initComponents();
         setName(Bundle.CTL_CmdbItensExplorerTopComponent());
         setToolTipText(Bundle.HINT_CmdbItensExplorerTopComponent());
-        initViewMapExplorerTree();
+       //initViewMapExplorerTree();
     }
 
     /**
@@ -70,19 +70,28 @@ public final class CmdbItensExplorerTopComponent extends TopComponent {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        cmdbItemScrollPanel = new javax.swing.JScrollPane();
+        cmdbItemExplorerTree = new javax.swing.JTree();
+
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
+        cmdbItemExplorerTree.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        cmdbItemScrollPanel.setViewportView(cmdbItemExplorerTree);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(cmdbItemScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(cmdbItemScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTree cmdbItemExplorerTree;
+    private javax.swing.JScrollPane cmdbItemScrollPanel;
     // End of variables declaration//GEN-END:variables
     @Override
     public void componentOpened() {

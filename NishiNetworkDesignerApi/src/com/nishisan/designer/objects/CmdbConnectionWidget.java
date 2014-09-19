@@ -12,9 +12,9 @@ import org.netbeans.api.visual.widget.Widget;
  *
  * @author Lucas
  */
-public class CmdbEdgeWidget extends Widget {
+public class CmdbConnectionWidget extends Widget {
 
-    public CmdbEdgeWidget(Scene scene) {
+    public CmdbConnectionWidget(Scene scene) {
         super(scene);
     }
 

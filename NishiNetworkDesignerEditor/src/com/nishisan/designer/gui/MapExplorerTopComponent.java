@@ -6,8 +6,6 @@
 package com.nishisan.designer.gui;
 
 import com.nishisan.designer.dto.CmdbMap;
-import com.nishisan.designer.dto.CmdbMapChildFactory;
-import com.nishisan.designer.objects.CmdbMapNode;
 import java.awt.BorderLayout;
 import java.util.Collection;
 import java.util.Iterator;
@@ -16,16 +14,12 @@ import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.explorer.ExplorerManager;
-import org.openide.explorer.ExplorerUtils;
 import org.openide.explorer.view.BeanTreeView;
-import org.openide.nodes.AbstractNode;
-import org.openide.nodes.Children;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
 import org.openide.util.LookupListener;
 import org.openide.windows.TopComponent;
 import org.openide.util.NbBundle.Messages;
-import org.openide.util.Utilities;
 
 /**
  * Top component which displays something.
@@ -63,19 +57,17 @@ public final class MapExplorerTopComponent extends TopComponent implements Explo
         initComponents();
         setName(Bundle.CTL_MapExplorerTopComponent());
         setToolTipText(Bundle.HINT_MapExplorerTopComponent());
-        initViewMapExplorerTree();
-        associateLookup(ExplorerUtils.createLookup(mgr, getActionMap()));
+       
+       // associateLookup(ExplorerUtils.createLookup(mgr, getActionMap()));
         //mgr.setRootContext(new AbstractNode(Children.create(new CmdbMapChildFactory(), true)));
-        mgr.setRootContext(new CmdbMapNode());
+        //  mgr.setRootContext(new CmdbMapNode());
     }
 
     /**
      * Inicia o BeanTreeView
      */
     private void initViewMapExplorerTree() {
-        setLayout(new BorderLayout());
-        mapExplorerView = new BeanTreeView();
-        add(mapExplorerView, BorderLayout.CENTER);
+
         logger.debug("Done Creating MapExplorerView");
 
     }
@@ -88,19 +80,28 @@ public final class MapExplorerTopComponent extends TopComponent implements Explo
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        explorerTreeScrollPanel = new javax.swing.JScrollPane();
+        mapExplorerTree = new javax.swing.JTree();
+
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
+        mapExplorerTree.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        explorerTreeScrollPanel.setViewportView(mapExplorerTree);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(explorerTreeScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(explorerTreeScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane explorerTreeScrollPanel;
+    private javax.swing.JTree mapExplorerTree;
     // End of variables declaration//GEN-END:variables
     @Override
     public void componentOpened() {

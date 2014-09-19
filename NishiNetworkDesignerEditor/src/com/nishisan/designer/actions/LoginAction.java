@@ -5,6 +5,7 @@
  */
 package com.nishisan.designer.actions;
 
+import com.nishisan.designer.gui.LoginWindow;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import org.apache.log4j.Logger;
@@ -28,11 +29,18 @@ import org.openide.util.NbBundle.Messages;
 })
 @Messages("CTL_LoginAction=Login")
 public final class LoginAction implements ActionListener {
-    
+
     private final Logger logger = Logger.getLogger(LoginAction.class);
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        logger.debug("Login Action Called..");
+       
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                LoginWindow l = new LoginWindow();
+                l.setVisible(true);
+                 logger.debug("Login Action Called..");
+            }
+        });
     }
 }

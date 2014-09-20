@@ -5,7 +5,8 @@
  */
 package com.nishisan.designer.actions;
 
-import com.nishisan.designer.gui.LoginWindow;
+
+import com.nishisan.designer.gui.dialogs.LoginWindow;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import org.apache.log4j.Logger;
@@ -34,13 +35,7 @@ public final class LoginAction implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+             logger.debug("Login Action Called..");
        
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                LoginWindow l = new LoginWindow();
-                l.setVisible(true);
-                 logger.debug("Login Action Called..");
-            }
-        });
     }
 }

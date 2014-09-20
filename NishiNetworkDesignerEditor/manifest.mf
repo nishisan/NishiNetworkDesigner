@@ -1,6 +1,7 @@
 Manifest-Version: 1.0
 OpenIDE-Module: com.nishisan.designer
 OpenIDE-Module-Install: com/nishisan/designer/Installer.class
+OpenIDE-Module-Layer: com/nishisan/designer/layer.xml
 OpenIDE-Module-Localizing-Bundle: com/nishisan/designer/Bundle.properties
 OpenIDE-Module-Requires: org.openide.windows.WindowManager
 OpenIDE-Module-Specification-Version: 1.0
